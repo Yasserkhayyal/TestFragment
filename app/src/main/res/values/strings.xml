@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestFragment</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <color name="pressed_color">#0088FF</color>
+    <color name="default_color">#C8C8C8</color>
+</resources>
