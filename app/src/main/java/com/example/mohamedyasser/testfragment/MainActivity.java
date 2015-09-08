@@ -35,13 +35,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
         }else{
 
-            if((
-                    getResources().getConfiguration().screenLayout &
+            if((getResources().getConfiguration().screenLayout &
             Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
                 initializeListView();
                 int id = savedInstanceState.getInt("checked item id ",-1);
                 if(id !=-1){
-                    lv.setSelection(id);
+                    lv.setItemChecked(id,true);
                 }
             }
 
@@ -58,7 +57,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                lv.getChildAt(position).setSelected(true);
+                lv.setSelection(position);
                 switch (position) {
                     case 0:
                         if (getSupportFragmentManager().
@@ -141,7 +140,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         if(getResources().getConfiguration().screenLayout==Configuration.SCREENLAYOUT_SIZE_LARGE){
-            outState.putInt("checked item id",lv.getSelectedItemPosition());
+            outState.putInt("checked item id",lv.getCheckedItemPosition());
         }
     }
 }
